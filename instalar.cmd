@@ -49,4 +49,5 @@ echo    - abrir el navegador del asistente e iniciar sesión en tus portales de 
 echo      %PY% -m postulador abrir
 :fin
 echo.
-pause
+rem Con /sinpausa (cuando lo ejecuta el asistente) termina sin esperar una tecla.
+if /i not "%~1"=="/sinpausa" pause

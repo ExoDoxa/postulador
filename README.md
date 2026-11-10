@@ -4,7 +4,34 @@
 
 Corre en tu PC con tu propia suscripción de Claude. No necesitas clave de API y tus datos no salen de tu equipo, salvo lo que el motor de IA procesa para trabajar y lo que envíes a cada portal.
 
-## Instalar (Windows)
+## Instalar con Claude (lo más fácil)
+
+1. Abre la app de escritorio de Claude, pestaña **Code**, y crea una sesión en cualquier carpeta (por ejemplo, Documentos).
+2. Copia este texto con el botón de copiar del recuadro y pégalo en el chat:
+
+```text
+Instálame Postulador en este equipo (Windows). Hazlo tú; no me pidas que escriba comandos.
+
+1. Revisa si tengo Git, Python 3.10 o más nuevo y Node.js LTS. Si falta alguno, instálalo con winget
+   (Git.Git, Python.Python.3.12, OpenJS.NodeJS.LTS). Si después no aparece en el PATH, usa su ruta completa.
+2. Clona https://github.com/ExoDoxa/postulador.git en %LOCALAPPDATA%\Postulador\codigo (fuera de OneDrive).
+   Si esa carpeta ya existe, entra y haz git pull.
+3. En esa carpeta ejecuta: cmd /c instalar.cmd /sinpausa
+4. Comprueba que "python -m postulador doctor" (o "py -3 -m postulador doctor") salga con "problemas": [].
+   Si hay problemas, arréglalos y explícame en palabras sencillas qué pasó.
+5. No uses la opción --nivel-maximo ni cambies los permisos que crea la instalación.
+6. Abre el navegador del asistente con: python -m postulador abrir
+7. Al final dime, en pasos cortos, lo que me toca hacer a mí.
+```
+
+3. Cuando termine, te toca a ti (el asistente no puede hacerlo):
+   - En **claude.ai → Configuración → Conectores**, desactiva todos los conectores.
+   - En la ventana del navegador que abrió, inicia sesión en tus portales de empleo (Computrabajo, elempleo, LinkedIn…).
+   - Crea una **sesión nueva** en la pestaña Code eligiendo la carpeta **`C:\Users\<tú>\Postulador`** y escribe «hola». Las búsquedas se hacen ahí, no en la sesión que instaló: solo esa carpeta tiene los bloqueos de seguridad.
+
+Para actualizar más adelante, pega en Claude: `Actualiza Postulador: git pull en %LOCALAPPDATA%\Postulador\codigo y luego cmd /c instalar.cmd /sinpausa.` Después cierra y vuelve a abrir la app.
+
+## Instalar a mano (Windows)
 
 Necesitas Python 3.10 o más nuevo (con «Add python.exe to PATH»), Node.js LTS, Git y la app de escritorio de Claude.
 
