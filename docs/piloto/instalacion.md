@@ -13,7 +13,7 @@ Lista de verificación del autor para el equipo de la persona. Diseño: [piloto_
 2. [ ] Instalar **Node.js LTS** desde nodejs.org.
 3. [ ] Instalar **Git** desde git-scm.com (para actualizar después).
 4. [ ] Clonar el repositorio **fuera de OneDrive**, por ejemplo en `%LOCALAPPDATA%\Postulador\codigo`:
-   `git clone <dirección> "%LOCALAPPDATA%\Postulador\codigo"`
+   `git clone https://github.com/ExoDoxa/radicado.git "%LOCALAPPDATA%\Postulador\codigo"`
 5. [ ] Doble clic en `instalar.cmd` dentro de esa carpeta. Hace tres cosas:
    - `pip install -r requirements.txt` (lee PDF, por ejemplo su CV);
    - `python -m postulador arranque`: crea `C:\Users\<ella>\Radicado` con los permisos, escribe

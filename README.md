@@ -11,7 +11,7 @@ Corre en tu PC con tu propia suscripción de Claude. No necesitas clave de API y
 Necesitas Python 3.10 o más nuevo (con «Add python.exe to PATH»), Node.js LTS, Git y la app de escritorio de Claude.
 
 1. Clona el repositorio **fuera de OneDrive**, por ejemplo:
-   `git clone <dirección> "%LOCALAPPDATA%\Postulador\codigo"`
+   `git clone https://github.com/ExoDoxa/radicado.git "%LOCALAPPDATA%\Postulador\codigo"`
 2. Doble clic en **`instalar.cmd`**. Instala lo que falta, crea tu carpeta de arranque (`C:\Users\<tú>\Radicado`) y deja dos accesos directos en el Escritorio: **Panel de Radicado** y **Cómo abrir Radicado con Claude**.
 3. En **claude.ai → Configuración → Conectores**, desactiva todos los conectores.
 4. Abre el navegador del asistente (`python -m postulador abrir`) e inicia sesión en tus portales de empleo. Es una ventana aparte de tu navegador normal.
