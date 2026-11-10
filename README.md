@@ -1,8 +1,6 @@
-# Radicado
+# Postulador
 
 **Tu búsqueda de empleo, con sello y comprobante.** Un asistente de IA que busca empleo contigo: adapta tu CV a cada oferta, rellena formularios en un navegador aparte y lleva el expediente. El envío lo haces tú, y cada formulario deja un comprobante escrito por el código.
-
-Por dentro el paquete se llama `postulador` (los comandos son `python -m postulador …`).
 
 Corre en tu PC con tu propia suscripción de Claude. No necesitas clave de API y tus datos no salen de tu equipo, salvo lo que el motor de IA procesa para trabajar y lo que envíes a cada portal.
 
@@ -11,8 +9,8 @@ Corre en tu PC con tu propia suscripción de Claude. No necesitas clave de API y
 Necesitas Python 3.10 o más nuevo (con «Add python.exe to PATH»), Node.js LTS, Git y la app de escritorio de Claude.
 
 1. Clona el repositorio **fuera de OneDrive**, por ejemplo:
-   `git clone https://github.com/ExoDoxa/radicado.git "%LOCALAPPDATA%\Postulador\codigo"`
-2. Doble clic en **`instalar.cmd`**. Instala lo que falta, crea tu carpeta de arranque (`C:\Users\<tú>\Radicado`) y deja dos accesos directos en el Escritorio: **Panel de Radicado** y **Cómo abrir Radicado con Claude**.
+   `git clone https://github.com/ExoDoxa/postulador.git "%LOCALAPPDATA%\Postulador\codigo"`
+2. Doble clic en **`instalar.cmd`**. Instala lo que falta, crea tu carpeta de arranque (`C:\Users\<tú>\Postulador`) y deja dos accesos directos en el Escritorio: **Panel de Postulador** y **Cómo abrir Postulador con Claude**.
 3. En **claude.ai → Configuración → Conectores**, desactiva todos los conectores.
 4. Abre el navegador del asistente (`python -m postulador abrir`) e inicia sesión en tus portales de empleo. Es una ventana aparte de tu navegador normal.
 5. En la app de Claude, pestaña **Code**, crea una sesión nueva **eligiendo la carpeta de arranque**. Escribe «hola».
@@ -24,7 +22,7 @@ La lista completa para quien instala está en [docs/piloto/instalacion.md](docs/
 ## Cómo se usa
 
 - **En el chat** le pides cosas: «hagamos mi perfil», «hazme un CV para asesora jurídica», «busca ofertas y rellena las que encajen».
-- **En el panel** (acceso directo «Panel de Radicado», funciona sin abrir Claude):
+- **En el panel** (acceso directo «Panel de Postulador», funciona sin abrir Claude):
   - **Lista para enviar:** lo que el asistente rellenó. Revisas la ventana del navegador, pulsas Enviar tú y aquí marcas «La envié», «No, ya no», «Que el asistente la corrija» o «Ya estaba enviada cuando la vi». Mientras alguna espere, el asistente no puede seguir.
   - **Lo que rellenó el asistente:** cada postulación tiene un comprobante escrito por el código: campos, casillas, CV subido, horas e imagen de la página.
   - **Perfil:** tus datos de carrera (por ejemplo, tarjeta profesional) y el botón **Revisado**. Sin revisar, no se generan CV ni cartas; si el asistente cambia algo, te muestra qué y tienes que revisar otra vez.
@@ -78,7 +76,7 @@ python -m postulador ejecutar "Revisa novedades"   # sin chat; programar "…" -
 ## Cómo funciona
 
 ```
-App de Claude (Code), sesión en C:\Users\<persona>\Radicado   denegado: comandos, leer/editar archivos, otros navegadores
+App de Claude (Code), sesión en C:\Users\<persona>\Postulador   denegado: comandos, leer/editar archivos, otros navegadores
    ├─ skill postulador          reglas y procesos: skills/postulador/
    ├─ MCP postulador            perfil, CV, documentos, registro, diagnostico: postulador/
    └─ puerta (MCP playwright)   postulador/puerta.py → Playwright MCP :8931 → navegador del asistente :9222

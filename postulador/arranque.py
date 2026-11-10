@@ -31,24 +31,24 @@ Esta carpeta es para buscar empleo con Postulador. Para cualquier pedido usa la 
 - Las herramientas `browser_*` de `playwright` tardan unos segundos en conectar. Si después de buscarlas un par de veces no aparecen, no busques ofertas ni postules: dile al usuario que cierre la sesión y abra una nueva en esta carpeta.
 - No le propongas comandos de terminal al usuario. Si algo falla, explícalo en palabras sencillas y sugiérele avisar a quien le instaló Postulador.
 - Los archivos que el usuario quiera darte (su CV, diplomas, certificados) los deja en la carpeta `entrada`. Tú no los abres: el código los guarda y él decide en el panel cuáles puedes leer.
-- Para ver su tablero, el usuario usa el acceso directo «Panel de Radicado» del Escritorio.
+- Para ver su tablero, el usuario usa el acceso directo «Panel de Postulador» del Escritorio.
 """
 LEEME = """<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><title>Cómo abrir Postulador</title>
 <style>body{font:18px/1.6 Georgia,serif;max-width:720px;margin:40px auto;padding:0 20px;color:#1f1b16;background:#fbf7ee}
 code{display:block;font:20px/1.4 Consolas,monospace;background:#fff;border:1px solid #cdbfa8;padding:12px;margin:8px 0;word-break:break-all}
 img{max-width:100%;border:1px solid #cdbfa8}h1{font-weight:500}</style></head>
-<body><h1>Cómo abrir Radicado con Claude</h1>
+<body><h1>Cómo abrir Postulador con Claude</h1>
 <p>En la app de Claude, pestaña <strong>Code</strong>, crea una sesión nueva y, cuando te pida la carpeta, elige esta:</p>
 <code>{carpeta}</code>
 <p>Si la sesión no empieza en esta carpeta, el asistente no tiene sus herramientas ni sus protecciones. Si dudas, cierra la sesión y abre otra eligiendo la carpeta.</p>
 {imagen}
-<p>Para ver tus postulaciones sin abrir Claude, usa el acceso directo <strong>Panel de Radicado</strong> del Escritorio.</p>
+<p>Para ver tus postulaciones sin abrir Claude, usa el acceso directo <strong>Panel de Postulador</strong> del Escritorio.</p>
 </body></html>
 """
 IMAGEN_CARPETA = RAIZ / 'docs' / 'piloto' / 'elegir_carpeta.png'
 
-def carpeta_por_defecto(): return Path.home() / 'Radicado'
+def carpeta_por_defecto(): return Path.home() / 'Postulador'
 
 def _comando(modulo, *extra):
     # Python con ruta absoluta: en otros equipos «python» puede ser el atajo de la Microsoft Store.
@@ -100,8 +100,8 @@ def acceso_directo(nombre, destino, argumentos='', carpeta_trabajo='', estilo=1,
 
 def _accesos(destino):
     programa, estilo = python_sin_ventana()
-    creados = [acceso_directo('Panel de Radicado.lnk', programa, '-m postulador panel --abrir', RAIZ, estilo, 'Abre tu tablero de postulaciones')]
-    creados.append(acceso_directo('Cómo abrir Radicado con Claude.lnk', destino / 'LEEME.html', '', destino, 1, 'Qué carpeta elegir en la app de Claude'))
+    creados = [acceso_directo('Panel de Postulador.lnk', programa, '-m postulador panel --abrir', RAIZ, estilo, 'Abre tu tablero de postulaciones')]
+    creados.append(acceso_directo('Cómo abrir Postulador con Claude.lnk', destino / 'LEEME.html', '', destino, 1, 'Qué carpeta elegir en la app de Claude'))
     return creados
 
 def _sellar_perfiles():

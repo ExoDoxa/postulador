@@ -488,7 +488,7 @@ class ArranqueTests(Base):
             resultado = arranque.crear(Path(self.carpeta.name) / 'arranque', accesos=True)
         self.assertEqual(len(resultado['accesos_directos']), 2)
         panel_lnk = llamadas[0]
-        self.assertEqual(panel_lnk['PD_NOMBRE'], 'Panel de Radicado.lnk')
+        self.assertEqual(panel_lnk['PD_NOMBRE'], 'Panel de Postulador.lnk')
         self.assertTrue(Path(panel_lnk['PD_DESTINO']).is_absolute())
         self.assertEqual(panel_lnk['PD_ARGS'], '-m postulador panel --abrir')
         self.assertTrue(llamadas[1]['PD_DESTINO'].endswith('LEEME.html'))

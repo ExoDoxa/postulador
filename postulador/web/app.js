@@ -434,7 +434,7 @@ async function refrescar() {
 async function iniciar() {
   const hoy = new Date();
   document.getElementById('fecha').textContent = hoy.toLocaleDateString('es-CO', { dateStyle: 'long' });
-  document.getElementById('numero-radicado').textContent = 'EXP-' + hoy.getFullYear() + '-' + String(hoy.getMonth() + 1).padStart(2, '0') + String(hoy.getDate()).padStart(2, '0');
+  document.getElementById('numero-expediente').textContent = 'EXP-' + hoy.getFullYear() + '-' + String(hoy.getMonth() + 1).padStart(2, '0') + String(hoy.getDate()).padStart(2, '0');
   token = (await pedir('/api/sesion')).token;
   estricto = (await pedir('/api/ajustes')).estricto;
   document.querySelector('.saltar').addEventListener('click', (evento) => { evento.preventDefault(); vista.focus(); });

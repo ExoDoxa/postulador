@@ -17,7 +17,7 @@ puede probar sin IA ya está automatizado:
 - [ ] Con un conector de claude.ai activado a propósito, la IA se niega a buscar y explica qué hacer. Después se
       vuelve a desactivar.
 - [ ] Una sesión abierta en otra carpeta no tiene las herramientas de Postulador.
-- [ ] El acceso directo «Panel de Radicado» abre el panel sin Claude.
+- [ ] El acceso directo «Panel de Postulador» abre el panel sin Claude.
 
 ## Formularios (bloque A2)
 

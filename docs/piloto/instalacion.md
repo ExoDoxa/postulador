@@ -13,21 +13,21 @@ Lista de verificación del autor para el equipo de la persona. Diseño: [piloto_
 2. [ ] Instalar **Node.js LTS** desde nodejs.org.
 3. [ ] Instalar **Git** desde git-scm.com (para actualizar después).
 4. [ ] Clonar el repositorio **fuera de OneDrive**, por ejemplo en `%LOCALAPPDATA%\Postulador\codigo`:
-   `git clone https://github.com/ExoDoxa/radicado.git "%LOCALAPPDATA%\Postulador\codigo"`
+   `git clone https://github.com/ExoDoxa/postulador.git "%LOCALAPPDATA%\Postulador\codigo"`
 5. [ ] Doble clic en `instalar.cmd` dentro de esa carpeta. Hace tres cosas:
    - `pip install -r requirements.txt` (lee PDF, por ejemplo su CV);
-   - `python -m postulador arranque`: crea `C:\Users\<ella>\Radicado` con los permisos, escribe
+   - `python -m postulador arranque`: crea `C:\Users\<ella>\Postulador` con los permisos, escribe
      `%LOCALAPPDATA%\Postulador\equipo.json` con el tope `solo_rellenar` y deja en el Escritorio los accesos
-     «Panel de Radicado» y «Cómo abrir Radicado con Claude»;
+     «Panel de Postulador» y «Cómo abrir Postulador con Claude»;
    - `python -m postulador doctor`: el diagnóstico tiene que salir con `"problemas": []`.
 6. [ ] En **claude.ai → Configuración → Conectores**, en la cuenta de ella: desactivar todos (Gmail, Drive,
    Calendar, TinyFish, Figma…). Ninguno debe quedar activo.
 7. [ ] Abrir el navegador del asistente con `python -m postulador abrir` e **iniciar sesión con ella** en sus
    portales (Computrabajo, elempleo, LinkedIn…). Las sesiones quedan en ese perfil (`%LOCALAPPDATA%\PostuladorNavegador`),
    aparte de su navegador normal.
-8. [ ] En la app de Claude, pestaña **Code**, crear una sesión nueva eligiendo `C:\Users\<ella>\Radicado`. Escribir
+8. [ ] En la app de Claude, pestaña **Code**, crear una sesión nueva eligiendo `C:\Users\<ella>\Postulador`. Escribir
    «hola» y comprobar que la IA llama a `diagnostico` sin problemas.
-9. [ ] Abrir el acceso directo «Panel de Radicado»: se abre su tablero en su navegador normal, sin Claude.
+9. [ ] Abrir el acceso directo «Panel de Postulador»: se abre su tablero en su navegador normal, sin Claude.
 10. [ ] Hacer con ella la prueba en sesión real ([pruebas_en_sesion.md](pruebas_en_sesion.md)).
 
 ## Para actualizar

@@ -40,8 +40,8 @@ echo  3. Revisión:
 
 echo.
 echo  Listo. En el Escritorio quedaron dos accesos directos:
-echo    - «Panel de Radicado»: tu tablero, sin abrir Claude.
-echo    - «Cómo abrir Radicado con Claude»: qué carpeta elegir al crear la sesión.
+echo    - «Panel de Postulador»: tu tablero, sin abrir Claude.
+echo    - «Cómo abrir Postulador con Claude»: qué carpeta elegir al crear la sesión.
 echo.
 echo  Falta, una sola vez:
 echo    - en claude.ai, Configuración, Conectores: desactivar todos los conectores;
