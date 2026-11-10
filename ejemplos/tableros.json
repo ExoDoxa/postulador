@@ -1,0 +1,16 @@
+{
+  "boards": [
+    {
+      "source": "greenhouse",
+      "site": "NOMBRE"
+    },
+    {
+      "source": "lever",
+      "site": "NOMBRE"
+    },
+    {
+      "source": "ashby",
+      "site": "NOMBRE"
+    }
+  ]
+}

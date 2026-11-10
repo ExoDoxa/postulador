@@ -1,0 +1,12 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### Result\n- 0: [Postular · Despacho Falso](http://127.0.0.1:57325/)\n- 1: (current) [](about:blank)"
+      }
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": "browser_tabs"
+}

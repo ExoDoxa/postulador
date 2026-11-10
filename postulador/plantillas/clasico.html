@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{idioma}}"><head><meta charset="utf-8"><title>CV</title>
+{{estilo}}
+<style>
+@page { size: A4; margin: 0 }
+* { box-sizing: border-box }
+html, body { margin: 0; padding: 0 }
+body { width: 210mm; height: 296mm; overflow: hidden; display: grid; grid-template-columns: 68mm 1fr; font: var(--tamano)/1.34 var(--fuente), Arial, sans-serif; color: #1f2933; -webkit-print-color-adjust: exact; print-color-adjust: exact }
+.foto-derecha { grid-template-columns: 1fr 68mm }
+.foto-derecha aside { order: 2 }
+.foto { display: block; width: 34mm; height: 34mm; margin: 0 auto 5mm; object-fit: cover; border-radius: 50% }
+aside { background: var(--acento); color: #f2f5f7; padding: 11mm 7mm }
+main { padding: 11mm 9mm 9mm }
+h1 { font-size: 19pt; line-height: 1.1; margin: 0 0 2mm }
+.titular { margin: 0 0 5mm; color: #b9d3e0 }
+h2 { font-size: 9.5pt; letter-spacing: .08em; text-transform: uppercase; margin: 5mm 0 2mm; padding-bottom: 1mm; border-bottom: .3mm solid currentColor }
+main h2:first-child { margin-top: 0 }
+h3 { font-size: 9.5pt; margin: 0 }
+ul { margin: 0; padding: 0; list-style: none }
+aside li { margin-bottom: 1mm; overflow-wrap: anywhere }
+main ul { padding-left: 3.5mm; list-style: disc }
+.detalle { margin: 0 0 .6mm; color: #52606d; font-size: 8.6pt }
+article { margin-bottom: 2.4mm; break-inside: avoid }
+</style></head>
+<body class="{{clase_foto}}">
+<aside>
+  {{foto}}
+  <h1>{{nombre}}</h1>
+  <p class="titular">{{titular}}</p>
+  <p>{{resumen}}</p>
+  {{carrera}}
+  {{contacto}}
+  {{habilidades}}
+  {{idiomas}}
+</aside>
+<main>
+  {{experiencia}}
+  {{formacion}}
+  {{publicaciones}}
+  {{proyectos}}
+</main>
+</body></html>

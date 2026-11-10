@@ -1,0 +1,12 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### Ran Playwright code\n```js\nawait page.goto('http://127.0.0.1:57325/');\n```\n### Page\n- Page URL: http://127.0.0.1:57325/\n- Page Title: Postular · Despacho Falso\n- Console: 1 errors, 0 warnings\n### Snapshot\n- [Snapshot](.playwright-mcp\\page-2026-11-10T16-17-46-883Z.yml)\n### Events\n- New console entries: .playwright-mcp\\console-2026-11-10T16-17-45-397Z.log#L1"
+      }
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": "browser_navigate"
+}

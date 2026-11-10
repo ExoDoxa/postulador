@@ -1,0 +1,293 @@
+/* Radicado · expediente de búsqueda.
+   Un expediente físico de despacho: carpeta manila, hoja de oficio con margen, fichas foliadas, sello de caucho y
+   comprobante troquelado. Sin fuentes externas: la política de seguridad del panel no las permite y debe funcionar
+   sin internet, así que usa las tipografías que trae Windows (Sitka, Bahnschrift, Cascadia) con respaldos. */
+
+:root {
+  --manila: #e4d3ab; --manila-oscuro: #cdb98b; --papel: #efe7d4; --hoja: #fcf9f1; --tinta: #1c1915; --tenue: #6a5f50;
+  --regla: #d7caae; --linea: #e9dfc9; --margen: #d9776a;
+  --sello: #b0281c; --sello-suave: #b0281c1a; --verde: #26654a; --verde-suave: #26654a1a; --ambar: #9c6100; --ambar-suave: #f2d78a;
+  --campo: #8a7c66; --sombra: #6b553033;
+  --titular: "Sitka Banner", "Sitka Display", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --texto: "Sitka Text", "Sitka Small", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --rotulo: "Bahnschrift SemiCondensed", "Bahnschrift", "DIN Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --mono: "Cascadia Mono", "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
+  --radio: 3px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --manila: #2b261c; --manila-oscuro: #3a3326; --papel: #15130f; --hoja: #1f1c16; --tinta: #eee5d1; --tenue: #a99b84;
+    --regla: #3d3529; --linea: #2a261e; --margen: #a1473d;
+    --sello: #ec7a64; --sello-suave: #ec7a6422; --verde: #7cc6a0; --verde-suave: #7cc6a01f; --ambar: #e2b14f; --ambar-suave: #4a3a17;
+    --campo: #7e725f; --sombra: #00000066;
+  }
+}
+
+* { box-sizing: border-box }
+html { background: var(--papel); color-scheme: light dark }
+body {
+  margin: 0 auto; max-width: 1120px; min-height: 100vh; padding: 28px 28px 64px; color: var(--tinta);
+  font: 17px/1.55 var(--texto); font-variant-numeric: oldstyle-nums;
+  /* fibras del papel: dos tramas cruzadas casi invisibles y una viñeta cálida */
+  background:
+    radial-gradient(120% 80% at 50% -10%, #ffffff55, transparent 60%),
+    repeating-linear-gradient(97deg, transparent 0 3px, #8a6d3b08 3px 4px),
+    repeating-linear-gradient(3deg, transparent 0 5px, #8a6d3b06 5px 6px),
+    var(--papel);
+}
+@media (prefers-color-scheme: dark) { body { background: radial-gradient(120% 80% at 50% -10%, #3a311f55, transparent 60%), repeating-linear-gradient(97deg, transparent 0 3px, #ffffff05 3px 4px), var(--papel) } }
+a { color: var(--sello); text-decoration-thickness: 1px; text-underline-offset: 3px }
+a:hover { text-decoration-thickness: 2px }
+::selection { background: var(--ambar-suave) }
+
+/* ——— Rótulos comunes ——— */
+.sobretitulo, .etiqueta, th, dt, .lema, .pie, .marca, legend {
+  font-family: var(--rotulo); font-stretch: semi-condensed; letter-spacing: .09em; text-transform: uppercase; font-size: 12.5px; color: var(--tenue);
+}
+h1, h2, h3 { font-family: var(--titular); font-weight: 600; letter-spacing: -.01em; line-height: 1.12 }
+h2 { margin: 34px 0 14px; font-size: clamp(25px, 3.4vw, 32px); display: flex; align-items: baseline; gap: 14px }
+h2::after { content: ""; flex: 1; border-bottom: 1px solid var(--regla); transform: translateY(-6px) }
+h3 { margin: 0; font-size: 21px }
+
+/* ——— Carátula ——— */
+.caratula {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "titulo sello" "datos datos"; gap: 18px 28px;
+  padding: 28px 32px 22px; background: var(--hoja); border: 1px solid var(--regla); border-radius: var(--radio);
+  box-shadow: 0 1px 0 var(--regla), 0 14px 30px -22px var(--sombra); animation: asoma .5s cubic-bezier(.2, .7, .2, 1) both;
+}
+.caratula::before { content: ""; position: absolute; inset: 9px; border: 1px solid var(--linea); pointer-events: none; border-radius: 2px }
+.caratula-titulo { grid-area: titulo; min-width: 0 }
+.sobretitulo { margin: 0 0 6px; color: var(--sello) }
+h1 { margin: 0; font-size: clamp(54px, 10vw, 104px); line-height: .88; font-weight: 700; font-style: italic; letter-spacing: -.035em }
+h1::first-letter { color: var(--sello) }
+.lema { margin: 14px 0 0; max-width: 46ch; text-transform: none; letter-spacing: .02em; font-size: 14.5px; font-stretch: normal }
+.caratula-sello {
+  grid-area: sello; position: relative; width: 132px; height: 132px; display: grid; place-items: center; align-self: center;
+  color: var(--sello); border: 3px solid currentColor; border-radius: 50%; transform: rotate(-12deg); opacity: .82;
+  animation: estampar .7s .25s cubic-bezier(.2, 1.5, .4, 1) both;
+}
+.caratula-sello::before { content: ""; position: absolute; inset: 7px; border: 1px solid currentColor; border-radius: 50% }
+.sello-anillo { position: absolute; inset: 14px; display: grid; place-items: start center; padding-top: 6px; font: 600 9.5px/1.1 var(--rotulo); letter-spacing: .16em; text-transform: uppercase; text-align: center }
+.sello-centro { font: italic 700 34px/1 var(--titular); letter-spacing: -.02em }
+.caratula-datos { grid-area: datos; display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 0; padding-top: 14px; border-top: 1px dashed var(--regla) }
+.caratula-datos div { display: flex; gap: 10px; align-items: baseline }
+dt { margin: 0 } dd { margin: 0; font: 15px/1.3 var(--mono) }
+
+/* ——— Pestañas de carpeta ——— */
+.pestanas { display: flex; flex-wrap: wrap; gap: 3px; align-items: flex-end; margin: 26px 0 0; padding: 0 10px; position: relative; z-index: 1 }
+.pestanas a {
+  position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 46px; padding: 10px 12px 9px;
+  color: var(--tenue); text-decoration: none; font: 500 13.5px/1.2 var(--rotulo); letter-spacing: .03em;
+  background: var(--manila-oscuro); border: 1px solid var(--regla); border-bottom: 0; border-radius: 9px 9px 0 0;
+  transition: transform .18s ease, background .18s ease, color .18s ease; animation: pestana .42s cubic-bezier(.2, .8, .2, 1) both;
+}
+.pestanas a:nth-child(2) { animation-delay: .03s } .pestanas a:nth-child(3) { animation-delay: .06s } .pestanas a:nth-child(4) { animation-delay: .09s }
+.pestanas a:nth-child(5) { animation-delay: .12s } .pestanas a:nth-child(6) { animation-delay: .15s } .pestanas a:nth-child(7) { animation-delay: .18s }
+.pestanas a:nth-child(8) { animation-delay: .21s } .pestanas a:nth-child(9) { animation-delay: .24s } .pestanas a:nth-child(10) { animation-delay: .27s }
+.pestanas a:hover { color: var(--tinta); transform: translateY(-3px); background: var(--manila) }
+.pestanas a[aria-current] { color: var(--tinta); background: var(--manila); font-weight: 700; transform: translateY(1px); box-shadow: 0 -6px 14px -10px var(--sombra) }
+.pestanas a[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 3px; background: var(--manila) }
+.cuenta:empty { display: none }
+.cuenta { min-width: 22px; padding: 1px 6px; text-align: center; color: #fff8ee; background: var(--sello); border-radius: 11px; font: 700 12px/1.5 var(--mono) }
+
+/* ——— La carpeta y la hoja ——— */
+.carpeta {
+  position: relative; padding: 18px; background: var(--manila); border: 1px solid var(--regla); border-radius: 0 var(--radio) var(--radio) var(--radio);
+  box-shadow: 0 18px 40px -28px var(--sombra);
+}
+main {
+  position: relative; min-height: 420px; padding: 10px 34px 40px 64px; outline: none; background: var(--hoja); border: 1px solid var(--regla);
+  border-radius: 2px; box-shadow: 0 1px 0 var(--regla), 4px 5px 0 -1px var(--manila-oscuro);
+  /* hoja de oficio: renglones tenues y margen rojo doble */
+  background-image: linear-gradient(90deg, transparent 42px, var(--margen) 42px 43px, transparent 43px 46px, var(--margen) 46px 47px, transparent 47px),
+                    repeating-linear-gradient(to bottom, transparent 0 31px, var(--linea) 31px 32px);
+  animation: asoma .45s .1s cubic-bezier(.2, .7, .2, 1) both;
+}
+main > * { animation: asoma .4s cubic-bezier(.2, .7, .2, 1) backwards }
+main > *:nth-child(2) { animation-delay: .04s } main > *:nth-child(3) { animation-delay: .08s } main > *:nth-child(4) { animation-delay: .12s } main > *:nth-child(5) { animation-delay: .16s }
+main > h2:first-child { margin-top: 26px }
+.nota { overflow-wrap: anywhere; max-width: 70ch; color: var(--tenue); font-size: 15.5px; font-style: italic }
+.pie { margin: 22px 4px 0; text-transform: none; letter-spacing: .02em; font-size: 13px; text-align: center }
+
+@keyframes asoma { from { opacity: 0; transform: translateY(8px) } }
+@keyframes pestana { from { opacity: 0; transform: translateY(14px) } }
+@keyframes estampar { 0% { opacity: 0; transform: rotate(-30deg) scale(1.9) } 70% { opacity: .9 } 100% { opacity: .82; transform: rotate(-12deg) scale(1) } }
+
+/* ——— Fichas del expediente ——— */
+.expediente {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 24px; margin: 20px 0; padding: 22px 26px 20px 30px;
+  background: var(--hoja); border: 1px solid var(--regla); border-radius: var(--radio); box-shadow: 0 2px 0 var(--regla), 0 16px 26px -24px var(--sombra);
+}
+.expediente::before { content: ""; position: absolute; left: 11px; top: 24px; bottom: 24px; width: 3px; border-radius: 2px; background: var(--verde) }
+.expediente:has(.marca.reportada)::before { background: var(--ambar) }
+.expediente > * { min-width: 0 }
+.expediente p { margin: 6px 0 }
+.expediente h3 { font-size: 24px; overflow-wrap: anywhere }
+.expediente pre { margin: 10px 0 0; white-space: pre-wrap; font: 14px/1.5 var(--mono); max-height: 240px; overflow: auto; border-left: 2px solid var(--regla); padding-left: 12px }
+.expediente aside { display: flex; flex-direction: column; gap: 10px; align-items: stretch; justify-content: center; padding-left: 22px; border-left: 1px dashed var(--regla) }
+.expediente aside img { width: 100%; border: 1px solid var(--regla); display: block }
+.folio { position: absolute; top: 12px; right: 16px; font: 12px/1 var(--mono); color: var(--tenue); letter-spacing: .06em }
+.expediente .etiqueta { margin: 0 }
+.porcentaje { font: italic 600 46px/1 var(--titular); color: var(--verde) }
+.porcentaje.medio { color: var(--ambar) } .porcentaje.bajo { color: var(--sello) }
+
+/* sello que cae sobre la ficha al confirmar */
+.expediente[data-sello]::after, .olvidada[data-sello]::after {
+  content: attr(data-sello); position: absolute; top: 50%; left: 50%; z-index: 2; padding: 8px 26px 6px; color: var(--sello); background: transparent;
+  border: 5px double currentColor; border-radius: 6px; font: 700 clamp(26px, 5vw, 42px)/1 var(--rotulo); letter-spacing: .16em; text-transform: uppercase;
+  transform: translate(-50%, -50%) rotate(-8deg); mix-blend-mode: multiply; animation: golpe .38s cubic-bezier(.2, 1.7, .4, 1) both;
+}
+.expediente[data-sello="Enviada"]::after, .olvidada[data-sello="Enviada"]::after, .expediente[data-sello="Aprobada"]::after { color: var(--verde) }
+@media (prefers-color-scheme: dark) { .expediente[data-sello]::after, .olvidada[data-sello]::after { mix-blend-mode: normal; background: var(--hoja) } }
+@keyframes golpe { from { opacity: 0; transform: translate(-50%, -50%) rotate(-20deg) scale(2.3) } }
+
+.marca {
+  display: inline-block; margin-top: 4px !important; padding: 3px 10px 2px; color: var(--verde); border: 1.5px solid currentColor; border-radius: 3px;
+  font-weight: 700; letter-spacing: .12em; transform: rotate(-1.2deg);
+}
+.marca.reportada { color: var(--ambar) }
+
+/* ——— Botones ——— */
+.acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px }
+button, select, input, textarea { font: 15px/1.3 var(--rotulo); color: var(--tinta); background: var(--hoja); border: 1px solid var(--tinta); padding: 10px 14px; border-radius: var(--radio) }
+button, select, input { min-height: 46px }
+input[type=checkbox] { min-height: 0; width: 20px; height: 20px; accent-color: var(--verde); vertical-align: middle }
+input, textarea, select { border-color: var(--campo); max-width: 100%; font-family: var(--texto) }
+textarea { width: 100%; min-height: 96px; resize: vertical }
+button { cursor: pointer; letter-spacing: .03em; transition: transform .1s ease, box-shadow .1s ease, background .15s ease; box-shadow: 0 2px 0 var(--tinta) }
+button:hover { transform: translateY(-1px); box-shadow: 0 3px 0 var(--tinta); background: var(--papel) }
+button:active { transform: translateY(2px); box-shadow: none }
+button:disabled { opacity: .55; cursor: progress }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--ambar); outline-offset: 2px }
+.sellar {
+  color: var(--verde); background: transparent; border: 2px solid currentColor; box-shadow: inset 0 0 0 2px var(--hoja), inset 0 0 0 3px currentColor;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .16em; padding: 10px 18px; transform: rotate(-1.5deg)
+}
+.sellar:hover { background: var(--verde-suave); transform: rotate(-1.5deg) scale(1.04); box-shadow: inset 0 0 0 2px var(--hoja), inset 0 0 0 3px currentColor }
+.sellar:active { transform: rotate(-1.5deg) scale(.97) }
+.boton { display: inline-flex; align-items: center; min-height: 46px; padding: 10px 16px; color: var(--tinta); background: var(--hoja); border: 1px solid var(--tinta); border-radius: var(--radio); box-shadow: 0 2px 0 var(--tinta); text-decoration: none; font: 15px/1.3 var(--rotulo) }
+.boton:hover { transform: translateY(-1px); box-shadow: 0 3px 0 var(--tinta) }
+
+/* ——— Nota adhesiva: postulación olvidada ——— */
+#olvidadas { display: grid; gap: 14px; margin: 0 0 18px }
+#olvidadas[hidden] { display: none }
+.olvidada {
+  position: relative; max-width: 760px; margin: 6px auto 0; padding: 22px 24px 16px; color: #2b2410; background: #f6dd7f;
+  border-radius: 2px 2px 14px 2px; box-shadow: 0 10px 18px -12px #00000055, inset 0 -18px 30px -26px #8a6a00; transform: rotate(-.6deg);
+  animation: asoma .45s .2s cubic-bezier(.2, .7, .2, 1) both;
+}
+.olvidada:nth-child(even) { transform: rotate(.5deg) }
+.olvidada::before { content: ""; position: absolute; top: -11px; left: 50%; width: 120px; height: 24px; transform: translateX(-50%) rotate(-2deg); background: #fffaf099; border: 1px solid #00000010; box-shadow: 0 1px 2px #0000001a }
+.olvidada p { margin: 0; font-size: 17px }
+.olvidada strong { font-family: var(--titular); font-size: 20px }
+.olvidada button { color: #2b2410; background: #fff6cf; border-color: #2b2410; box-shadow: 0 2px 0 #2b2410 }
+.olvidada .sellar { color: #1d5a3f; background: transparent; box-shadow: inset 0 0 0 2px #f6dd7f, inset 0 0 0 3px currentColor }
+
+/* ——— Comprobante troquelado ——— */
+.recibo {
+  position: relative; max-width: 860px; margin: 18px 0 8px; padding: 30px 30px 26px; background: var(--hoja);
+  border-left: 1px solid var(--regla); border-right: 1px solid var(--regla); box-shadow: 0 18px 30px -26px var(--sombra);
+}
+.recibo::before, .recibo::after {
+  content: ""; position: absolute; left: -1px; right: -1px; height: 12px;
+  background: linear-gradient(135deg, transparent 6px, var(--hoja) 6px) 0 0 / 12px 12px repeat-x, linear-gradient(225deg, transparent 6px, var(--hoja) 6px) 0 0 / 12px 12px repeat-x;
+}
+.recibo::before { top: -12px; transform: scaleY(-1) }
+.recibo::after { bottom: -12px }
+.recibo h3 { margin: 26px 0 10px; font-size: 19px; display: flex; align-items: center; gap: 10px }
+.recibo h3::before { content: "§"; color: var(--sello); font-family: var(--titular) }
+.recibo .riesgo { margin-top: 14px }
+.imagen-pagina { display: block; max-width: 100%; margin-top: 6px; border: 1px solid var(--regla); background: #fff; box-shadow: 0 10px 20px -16px var(--sombra) }
+
+/* ——— Avisos ——— */
+.riesgo { padding: 12px 16px; border-left: 4px solid var(--sello); background: var(--sello-suave); font-size: 15.5px; border-radius: 0 var(--radio) var(--radio) 0 }
+.aviso-perfil {
+  position: relative; margin: 16px 0 22px; padding: 20px 22px; background: var(--hoja); border: 1px solid var(--regla); border-radius: var(--radio);
+  border-top: 6px solid transparent; border-image: repeating-linear-gradient(-45deg, var(--ambar) 0 10px, transparent 10px 20px) 6 0 0 0;
+}
+.aviso-perfil h3 { margin-bottom: 4px; font-size: 22px }
+.vacio {
+  margin: 18px 0; padding: 40px 28px; color: var(--tenue); font-style: italic; text-align: center;
+  background: repeating-linear-gradient(-45deg, transparent 0 12px, var(--linea) 12px 13px), var(--hoja); border: 1px dashed var(--campo); border-radius: var(--radio)
+}
+.bloqueo { color: var(--sello) }
+
+/* ——— Cifras y tablas tipo libro de registro ——— */
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); background: var(--hoja); border: 1px solid var(--regla); border-radius: var(--radio) }
+.cifras div { padding: 16px 20px; border-right: 1px solid var(--regla) }
+.cifras div:last-child { border-right: 0 }
+.cifras strong { display: block; font: 600 46px/1.05 var(--titular); font-variant-numeric: lining-nums }
+.envoltura { overflow-x: auto; background: var(--hoja); border: 1px solid var(--regla); border-radius: var(--radio) }
+table { width: 100%; border-collapse: collapse; font-size: 15.5px }
+th { text-align: left; padding: 10px 14px 8px; border-bottom: 2px solid var(--tinta); background: var(--papel); font-size: 12px }
+td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--linea); vertical-align: top; overflow-wrap: anywhere }
+td.numero, th.numero { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap }
+tbody tr:hover { background: var(--sello-suave) }
+.filtros { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px }
+.fila { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 10px 0 }
+fieldset { border: 1px solid var(--regla); border-radius: var(--radio); padding: 8px 14px 12px; margin: 12px 0 }
+legend { padding: 0 6px }
+
+/* ——— Documentos y perfil ——— */
+.expediente.documento { grid-template-columns: minmax(0, 1fr) }
+.expediente.documento aside:empty { display: none }
+.expediente.documento.nuevo { border-color: var(--ambar) }
+.expediente.documento.nuevo::before { background: var(--ambar) }
+.campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin: 12px 0 }
+.campo { display: flex; flex-direction: column; gap: 5px; min-width: 0 }
+.campo select, .campo input { width: 100% }
+
+/* ——— Mis CV ——— */
+.galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 26px; padding: 8px 0 }
+.hoja-cv { display: flex; flex-direction: column; gap: 10px; padding: 10px 10px 12px; text-align: left; background: var(--hoja); border-color: var(--regla); box-shadow: 0 2px 0 var(--regla), 0 16px 24px -20px var(--sombra); transition: transform .16s, box-shadow .16s }
+.hoja-cv:nth-child(3n + 1) { transform: rotate(-.8deg) } .hoja-cv:nth-child(3n) { transform: rotate(.7deg) }
+.hoja-cv:hover { transform: translateY(-5px) rotate(0); box-shadow: 0 2px 0 var(--regla), 0 22px 28px -18px var(--sombra); background: var(--hoja) }
+.hoja-cv img { width: 100%; aspect-ratio: 210 / 297; object-fit: cover; object-position: top; background: #fff; border: 1px solid var(--regla) }
+.sin-vista { display: grid; place-items: center; aspect-ratio: 210 / 297; color: var(--tenue); border: 1px dashed var(--campo) }
+.nombre-cv { font: 16px/1.3 var(--titular); overflow-wrap: anywhere }
+.hoja-cv .cuenta { width: fit-content }
+.editor { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, 1fr); gap: 26px; align-items: start }
+.mesa-cv { position: sticky; top: 12px; background: var(--hoja); border: 1px solid var(--regla); box-shadow: 0 16px 26px -20px var(--sombra); padding: 12px }
+.mesa-cv img { display: block; width: 100%; background: #fff }
+.controles { background: var(--hoja); border: 1px solid var(--regla); border-radius: var(--radio); padding: 20px }
+.controles h3 { margin: 20px 0 10px } .controles h3:first-child { margin-top: 0 }
+.comentarios { margin: 0 0 12px; padding: 0; list-style: none }
+.comentarios li { padding: 8px 12px; margin-bottom: 8px; border-left: 3px solid var(--ambar); background: var(--papel) }
+.comentarios li.resuelto { border-left-color: var(--verde); opacity: .85 }
+.comentarios p { margin: 2px 0; font-size: 15px }
+.nota-agente { color: var(--tenue); font-style: italic }
+.informe { padding: 22px 26px; background: var(--hoja); border: 1px solid var(--regla); font: 15.5px/1.65 var(--texto); white-space: pre-wrap }
+.tarea { display: block; width: 100%; text-align: left; margin-bottom: 8px; box-shadow: none; border-color: var(--campo); font-family: var(--mono); font-size: 14px }
+
+/* ——— Utilidades ——— */
+.saltar { position: absolute; left: 24px; top: -60px; z-index: 5; padding: 10px 14px; color: var(--hoja); background: var(--tinta); font: 14px/1.4 var(--rotulo) }
+.saltar:focus { top: 8px }
+.desconectado { margin: 0 0 14px; padding: 12px 16px; color: #fff8ee; background: var(--sello); font: 15px/1.4 var(--rotulo); border-radius: var(--radio) }
+.aviso {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 10; margin: 0; padding: 12px 20px; max-width: calc(100vw - 32px);
+  color: var(--hoja); background: var(--tinta); font: 15px/1.4 var(--rotulo); letter-spacing: .02em; border-radius: var(--radio); box-shadow: 0 12px 30px -10px #0008;
+  animation: asoma .25s ease-out
+}
+
+/* ——— Teléfono ——— */
+@media (max-width: 720px) {
+  body { padding: 14px 12px 56px; font-size: 16px }
+  .caratula { grid-template-columns: minmax(0, 1fr); grid-template-areas: "titulo" "datos"; padding: 22px 20px 18px }
+  .caratula-sello { display: none }
+  .pestanas { padding: 0; gap: 3px }
+  .pestanas a { padding: 9px 11px 8px; font-size: 13px; border-radius: 7px 7px 0 0 }
+  .carpeta { padding: 8px; border-radius: 0 0 var(--radio) var(--radio) }
+  main { padding: 6px 16px 30px 30px; background-image: linear-gradient(90deg, transparent 16px, var(--margen) 16px 17px, transparent 17px), repeating-linear-gradient(to bottom, transparent 0 31px, var(--linea) 31px 32px) }
+  .expediente { grid-template-columns: minmax(0, 1fr); padding: 20px 16px 16px 24px; gap: 14px }
+  .expediente aside { padding: 12px 0 0; border-left: 0; border-top: 1px dashed var(--regla) }
+  .expediente aside img { max-width: 160px }
+  .editor { grid-template-columns: minmax(0, 1fr) }
+  .mesa-cv { position: static }
+  .galeria { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px }
+  .filtros input, .filtros select { flex: 1 1 100%; width: 100% }
+  .cifras div { border-right: 0; border-bottom: 1px solid var(--regla) }
+  .recibo { padding: 26px 16px 20px }
+  .olvidada { transform: none }
+  h2 { flex-wrap: wrap }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important } }

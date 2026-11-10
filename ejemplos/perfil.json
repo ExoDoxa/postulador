@@ -1,0 +1,29 @@
+{
+  "name": "Ana Ejemplo Ficticia",
+  "headline": "Asistente administrativa",
+  "contact": ["ana@ejemplo.com", "+00 000 000 0000", "Ciudad, País"],
+  "skills": ["Atención al cliente", "Organización de agendas", "Hojas de cálculo", "Redacción"],
+  "cv_tool_labels": ["Excel", "Canva"],
+  "languages": ["Español · Nativo", "Inglés · Básico"],
+  "education": [
+    {"title": "Técnica en Gestión Administrativa", "organization": "Instituto Ejemplo", "date": "2021 – 2023"}
+  ],
+  "experience": [
+    {
+      "id": "tienda",
+      "title": "Auxiliar de ventas",
+      "organization": "Tienda Ejemplo",
+      "date": "2023 – actualidad",
+      "bullets": ["Atención de clientes en mostrador.", "Registro diario de ventas e inventario.", "Respuesta a pedidos por mensajería."],
+      "cv_bullets": [0, 1]
+    }
+  ],
+  "publications": [],
+  "projects": [
+    {"id": "feria", "title": "Feria escolar", "cv_title": "Feria escolar", "cv_description": "Organización de la logística para 20 expositores."}
+  ],
+  "cv_summaries": {
+    "general": "Persona organizada con experiencia en atención al cliente y tareas administrativas.",
+    "asistente": "Asistente con experiencia en clientes, registros y seguimiento de pedidos."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### Page\n- Page URL: http://127.0.0.1:57325/\n- Page Title: Postular · Despacho Falso\n- Console: 1 errors, 0 warnings\n### Snapshot\n```yaml\n- generic [active] [ref=e1]:\n  - heading \"Abogada junior\" [level=1] [ref=e2]\n  - generic [ref=e3]:\n    - generic [ref=e4]:\n      - text: Nombre\n      - textbox \"Nombre\" [ref=e5]\n    - generic [ref=e6]:\n      - text: Tarjeta profesional\n      - textbox \"Tarjeta profesional\" [ref=e7]\n    - generic [ref=e8]:\n      - text: Hoja de vida\n      - button \"Hoja de vida\" [ref=e9]\n    - generic [ref=e10]:\n      - checkbox \"Acepto el tratamiento de datos\" [ref=e11]\n      - text: Acepto el tratamiento de datos\n    - group \"Modalidad\" [ref=e12]:\n      - generic [ref=e14]:\n        - radio \"Remoto\" [ref=e15]\n        - text: Remoto\n      - generic [ref=e16]:\n        - radio \"Presencial\" [ref=e17]\n        - text: Presencial\n    - generic [ref=e18]:\n      - checkbox \"Declaro bajo juramento que la información es veraz\" [ref=e19]\n      - text: Declaro bajo juramento que la información es veraz\n    - button \"Enviar postulación\" [ref=e20]\n    - button [ref=e21]\n  - generic [ref=e23]:\n    - textbox [ref=e24]\n    - button \"Continuar\" [ref=e25]\n  - iframe [ref=e26]:\n    - generic [ref=f1e2]:\n      - textbox [ref=f1e3]\n      - button \"Aplicar\" [ref=f1e4]\n  - paragraph [ref=e27]:\n    - link \"Pagar la inscripción\" [ref=e28] [cursor=pointer]:\n      - /url: https://www.pse.com.co/pagar\n    - text: ·\n    - link \"Panel\" [ref=e29] [cursor=pointer]:\n      - /url: http://127.0.0.1:8770/\n```"
+      }
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": "browser_snapshot"
+}

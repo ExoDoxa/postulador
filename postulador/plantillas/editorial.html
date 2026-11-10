@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{idioma}}"><head><meta charset="utf-8"><title>CV</title>
+{{estilo}}
+<style>
+@page { size: A4; margin: 0 }
+* { box-sizing: border-box }
+html, body { margin: 0; padding: 0 }
+body { width: 210mm; height: 296mm; overflow: hidden; padding: 15mm 17mm 10mm; font: var(--tamano)/1.4 var(--fuente), Georgia, serif; color: #24201a; -webkit-print-color-adjust: exact; print-color-adjust: exact }
+header { display: grid; grid-template-columns: 1fr auto; gap: 7mm; align-items: end; padding-bottom: 3.5mm; border-bottom: .25mm solid #24201a }
+.foto-izquierda header { grid-template-columns: auto 1fr }
+.foto-izquierda .foto { order: -1 }
+.foto { width: 24mm; height: 30mm; object-fit: cover; filter: grayscale(.2) }
+h1 { margin: 0; font-size: 2.7em; line-height: 1; font-weight: 500; font-style: italic; color: var(--acento) }
+.titular { margin: 1.5mm 0 0; font-size: 1.08em }
+.datos h2 { display: none }
+.datos ul { display: flex; flex-wrap: wrap; gap: 0 4mm; margin: 2.5mm 0 0; padding: 0; list-style: none; font-size: .9em }
+.resumen { margin: 3.5mm 0 0; font-size: 1.04em; font-style: italic }
+main { margin-top: 1mm }
+h2 { margin: 3.8mm 0 1.2mm; font-size: .86em; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--acento) }
+h3 { margin: 0; font-size: 1.05em; font-weight: 700 }
+.detalle { margin: 0 0 .5mm; color: #5f5748; font-style: italic; font-size: .94em }
+article { margin-bottom: 1.8mm; break-inside: avoid }
+main ul { margin: 0; padding-left: 3.6mm }
+.listas { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm }
+.listas ul { list-style: none; margin: 0; padding: 0 }
+</style></head>
+<body class="{{clase_foto}}">
+<header>
+  <div>
+    <h1>{{nombre}}</h1>
+    <p class="titular">{{titular}}</p>
+    <div class="datos">{{contacto}}</div>
+  </div>
+  {{foto}}
+</header>
+<p class="resumen">{{resumen}}</p>
+{{carrera}}
+<main>
+  {{experiencia}}
+  {{formacion}}
+  {{publicaciones}}
+  {{proyectos}}
+</main>
+<div class="listas"><div>{{habilidades}}</div><div>{{idiomas}}</div></div>
+</body></html>

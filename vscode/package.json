@@ -1,0 +1,14 @@
+{
+  "name": "panel",
+  "displayName": "Postulador",
+  "description": "Muestra el panel de Postulador dentro de VS Code, junto al chat del agente.",
+  "version": "0.1.0",
+  "publisher": "postulador",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "main": "./extension.js",
+  "activationEvents": ["workspaceContains:postulador/mcp_server.py"],
+  "contributes": {
+    "commands": [{ "command": "postulador.abrir", "title": "Postulador: abrir panel" }]
+  }
+}

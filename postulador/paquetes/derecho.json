@@ -1,0 +1,27 @@
+{
+  "id": "derecho",
+  "nombre": "Derecho",
+  "titulo_cv": "Datos profesionales",
+  "provisional": "Valores iniciales del autor. Se ajustan después de la sesión con la persona (bloque B del diseño).",
+  "paginas_maximas": 2,
+  "campos": [
+    {"clave": "tarjeta_profesional", "etiqueta": "Tarjeta profesional", "obligatorio": true, "sensible": false, "en_cv": true},
+    {"clave": "areas_practica", "etiqueta": "Áreas de práctica", "obligatorio": true, "sensible": false, "en_cv": true},
+    {"clave": "ciudad", "etiqueta": "Ciudad de residencia", "obligatorio": true, "sensible": false, "en_cv": true},
+    {"clave": "disponibilidad", "etiqueta": "Disponibilidad", "obligatorio": false, "sensible": false, "en_cv": false},
+    {"clave": "aspiracion_salarial", "etiqueta": "Aspiración salarial", "obligatorio": false, "sensible": false, "en_cv": false},
+    {"clave": "cedula", "etiqueta": "Cédula de ciudadanía", "obligatorio": false, "sensible": true, "en_cv": false},
+    {"clave": "fecha_nacimiento", "etiqueta": "Fecha de nacimiento", "obligatorio": false, "sensible": true, "en_cv": false}
+  ],
+  "tipos_documento": [
+    {"clave": "diploma_pregrado", "etiqueta": "Diploma de abogada"},
+    {"clave": "acta_grado", "etiqueta": "Acta de grado"},
+    {"clave": "tarjeta_profesional", "etiqueta": "Tarjeta profesional"},
+    {"clave": "diploma_posgrado", "etiqueta": "Diploma de posgrado"},
+    {"clave": "certificado_laboral", "etiqueta": "Certificado laboral"},
+    {"clave": "antecedentes", "etiqueta": "Certificado de antecedentes"},
+    {"clave": "cedula", "etiqueta": "Copia de la cédula"},
+    {"clave": "rut", "etiqueta": "RUT"},
+    {"clave": "otro", "etiqueta": "Otro documento"}
+  ]
+}

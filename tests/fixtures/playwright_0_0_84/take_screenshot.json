@@ -1,0 +1,17 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### Result\n- [Screenshot of full page](.playwright-mcp\\page-2026-11-10T16-17-47-455Z.png)\n### Ran Playwright code\n```js\n// Screenshot full page and save it as .playwright-mcp\\page-2026-11-10T16-17-47-455Z.png\nawait page.screenshot({\n  fullPage: true,\n  path: '.playwright-mcp\\\\page-2026-11-10T16-17-47-455Z.png',\n  scale: 'css',\n  type: 'png'\n});\n```"
+      },
+      {
+        "type": "image",
+        "data": "<30652 caracteres en base64>",
+        "mimeType": "image/png"
+      }
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": "browser_take_screenshot"
+}

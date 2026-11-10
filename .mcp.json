@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "postulador": {
+      "command": "python",
+      "args": [
+        "-m",
+        "postulador.mcp_server",
+        "--con-panel"
+      ]
+    },
+    "playwright": {
+      "command": "python",
+      "args": [
+        "-m",
+        "postulador.puerta"
+      ]
+    }
+  }
+}

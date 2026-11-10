@@ -1,0 +1,5 @@
+datos_usuario/
+__pycache__/
+*.pyc
+.playwright-mcp/
+.claude/settings.local.json

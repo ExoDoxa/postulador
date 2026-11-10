@@ -1,0 +1,2 @@
+# Opcional: lee el PDF generado como lo haría un ATS.
+pdfminer.six==20260107

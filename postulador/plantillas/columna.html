@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="{{idioma}}"><head><meta charset="utf-8"><title>CV</title>
+{{estilo}}
+<style>
+@page { size: A4; margin: 0 }
+* { box-sizing: border-box }
+html, body { margin: 0; padding: 0 }
+body { width: 210mm; height: 296mm; overflow: hidden; padding: 13mm 15mm 10mm; font: var(--tamano)/1.36 var(--fuente), Arial, sans-serif; color: #1f2933; -webkit-print-color-adjust: exact; print-color-adjust: exact }
+header { display: flex; gap: 6mm; align-items: center; padding-bottom: 3mm; border-bottom: .6mm solid var(--acento) }
+.foto-derecha header { flex-direction: row-reverse }
+.foto { width: 25mm; height: 25mm; object-fit: cover; border-radius: 50% }
+.identidad { flex: 1 }
+h1 { margin: 0; font-size: 2.2em; line-height: 1.1; color: var(--acento) }
+.titular { margin: .5mm 0 1mm; font-size: 1.1em }
+.datos h2 { display: none }
+.datos ul { display: flex; flex-wrap: wrap; gap: 0 5mm; margin: 0; padding: 0; list-style: none; font-size: .92em; color: #3e4c59 }
+.resumen { margin: 3mm 0 0 }
+h2 { margin: 4mm 0 1.4mm; font-size: 1em; letter-spacing: .08em; text-transform: uppercase; color: var(--acento) }
+h3 { margin: 0; font-size: 1.03em }
+.detalle { margin: 0 0 .5mm; color: #52606d; font-size: .93em }
+article { margin-bottom: 1.9mm; break-inside: avoid }
+main ul, .listas ul { margin: 0; padding-left: 3.6mm }
+.listas { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm }
+.listas ul { list-style: none; padding: 0 }
+</style></head>
+<body class="{{clase_foto}}">
+<header>
+  {{foto}}
+  <div class="identidad">
+    <h1>{{nombre}}</h1>
+    <p class="titular">{{titular}}</p>
+    <div class="datos">{{contacto}}</div>
+  </div>
+</header>
+<p class="resumen">{{resumen}}</p>
+{{carrera}}
+<main>
+  {{experiencia}}
+  {{formacion}}
+  {{publicaciones}}
+  {{proyectos}}
+</main>
+<div class="listas"><div>{{habilidades}}</div><div>{{idiomas}}</div></div>
+</body></html>

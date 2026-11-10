@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Radicado · Expediente de búsqueda</title>
+<link rel="stylesheet" href="/styles.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<a class="saltar" href="#vista">Saltar al contenido</a>
+<p class="desconectado" id="desconectado" role="alert" hidden>El panel no responde. Ciérralo y ábrelo otra vez con el acceso directo «Panel de Radicado» del Escritorio.</p>
+<header class="caratula">
+  <div class="caratula-titulo">
+    <p class="sobretitulo">Expediente de búsqueda de empleo</p>
+    <h1>Radicado</h1>
+    <p class="lema">Lo que el asistente prepara, lo envías tú. Todo queda con sello y comprobante.</p>
+  </div>
+  <div class="caratula-sello" aria-hidden="true">
+    <span class="sello-anillo">Archivo personal · Consulta local</span>
+    <span class="sello-centro">Rad.</span>
+  </div>
+  <dl class="caratula-datos">
+    <div><dt>Fecha</dt><dd id="fecha"></dd></div>
+    <div><dt>N.º de radicado</dt><dd id="numero-radicado"></dd></div>
+  </dl>
+</header>
+<nav class="pestanas" aria-label="Secciones">
+  <a href="#mesa" data-vista="mesa">Lista para enviar <span class="cuenta" id="cuenta-lista"></span></a>
+  <a href="#postulaciones" data-vista="postulaciones">Postulaciones</a>
+  <a href="#perfil" data-vista="perfil">Perfil</a>
+  <a href="#documentos" data-vista="documentos">Documentos <span class="cuenta" id="cuenta-docs"></span></a>
+  <a href="#cv" data-vista="cv">Mis CV <span class="cuenta" id="cuenta-cv"></span></a>
+  <a href="#seguimientos" data-vista="seguimientos">Seguimientos <span class="cuenta" id="cuenta-seguir"></span></a>
+  <a href="#resumen" data-vista="resumen">Resultados</a>
+  <a href="#vivo" data-vista="vivo">En vivo</a>
+  <a href="#informes" data-vista="informes">Informes</a>
+  <a href="#ajustes" data-vista="ajustes">Ajustes</a>
+</nav>
+<div class="carpeta">
+  <div id="olvidadas" hidden></div>
+  <main id="vista" tabindex="-1"></main>
+</div>
+<footer class="pie">Radicado funciona en tu equipo. El panel no envía nada: los envíos los haces tú, en la ventana del navegador.</footer>
+<p class="aviso" id="aviso" role="status" hidden></p>
+</body>
+</html>
